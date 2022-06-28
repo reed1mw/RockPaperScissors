@@ -1,33 +1,35 @@
 let computerPlay = "";
 let humanPlay = "";
-let matchResult = "";
-
 
 //Working user submission, coverts to lowercase
-const humanPrompt = function() {
+function humanPrompt () {
    humanPlay = prompt("What is your choice, Rock, Paper, or Scissors?").toLowerCase(); 
 }
 
-//Working random number 0, 1, or 2
+ //NEW FUNCTION FOR COMPUTER CHOICE:
+
+ //Working random number 0, 1, or 2
 function computerMathRandom(max){
-    return Math.floor(Math.random()* max);
+    return Math.floor(Math.random()* max);    
 }
 let computerRandomNumber = (computerMathRandom(3));
 
+
 //Working else if that generates correct rock paper or scissors
-if (computerRandomNumber == 0) {
-    computerPlay = "rock";
-} else if (computerRandomNumber == 1) {
-    computerPlay = "paper";
-} else {
-    computerPlay = "scissors";
+
+function computerDecision (){
+    if (computerRandomNumber == 0) {
+        computerPlay = "rock";
+    } else if (computerRandomNumber == 1) {
+        computerPlay = "paper";
+    } else {
+        computerPlay = "scissors";
+    } 
 }
 
 
- humanPrompt();
- computerMathRandom();
 
- function playRound (humanPlay, computerPlay) {
+ function compareResults (humanPlay, computerPlay) {
 
     if (humanPlay === "rock") {
          if (computerPlay === "rock") {  
@@ -57,14 +59,28 @@ if (computerRandomNumber == 0) {
         } else {
             alert("You lose, rock beats scissors!")
         }
-    }
+    } 
  }
 
- playRound(humanPlay, computerPlay);
+ 
+ //console.log(humanPlay);
+ //console.log(computerRandomNumber);
+ //console.log(computerPlay);
 
-console.log(humanPlay);
-console.log(computerRandomNumber);
-console.log(computerPlay);
+function game() {
+    for(let i = 0; i < 5; i++) {
+        humanPrompt();
+        
+        computerMathRandom();
+        computerDecision();
+        compareResults(humanPlay, computerPlay);       
+        //console.log(humanPlay);
+        //console.log(computerRandomNumber);
+        //console.log(computerPlay);   
+        computerRandomNumber = (computerMathRandom(3));  
+   }
+}
 
+game();
 
 
