@@ -1,5 +1,7 @@
 let computerPlay = "";
 let humanPlay = "";
+let computerScore = 0;
+let playerScore = 0;
 
 //Working user submission, coverts to lowercase
 function humanPrompt () {
@@ -33,35 +35,50 @@ function computerDecision (){
 
     if (humanPlay === "rock") {
          if (computerPlay === "rock") {  
-            alert("It's a tie, rock vs rock!")
+            alert("It's a tie, rock vs rock!");           
         } else if (computerPlay === "scissors") {
-            alert ("You win, rock beats scissors!")
+            alert ("You win, rock beats scissors!");
+            playerScore++; 
         } else {
-            alert ("you lose, paper beats rock!")
+            alert ("you lose, paper beats rock!");
+            computerScore++;
         }
     }
 
     else if (humanPlay === "paper") {
         if (computerPlay === "paper") {
-            alert("It's a tie, paper vs paper!")
+            alert("It's a tie, paper vs paper!");
         } else if (computerPlay === "rock"){
-            alert("You win, paper beats rock!")
+            alert("You win, paper beats rock!");
+            playerScore++;
         } else {
             alert ("You lose, scissors beats paper!")
+            computerScore++;
         }
     }
 
     else {
         if (computerPlay === "scissors") {
-            alert("It's a tie, scissors vs scissors!")
+            alert("It's a tie, scissors vs scissors!");
         } else if (computerPlay === "paper") {
-            alert("You win, scissors beats paper!")
+            alert("You win, scissors beats paper!");
+            playerScore++;
         } else {
             alert("You lose, rock beats scissors!")
+            computerScore++;
         }
     } 
  }
 
+ function gameResults (playerScore, computerScore) {
+    if (playerScore === computerScore) {
+        alert(`It's a tie, your score was ${playerScore} vs computer score of ${computerScore}`);
+    } else if (playerScore > computerScore) {
+        alert(`You won! Your score was ${playerScore} vs computer score of ${computerScore}`);
+    } else {
+        alert(`You lost! Your score was ${playerScore} vs computer score of ${computerScore}`);
+    }
+ }
  
  //console.log(humanPlay);
  //console.log(computerRandomNumber);
@@ -76,11 +93,14 @@ function game() {
         compareResults(humanPlay, computerPlay);       
         //console.log(humanPlay);
         //console.log(computerRandomNumber);
-        //console.log(computerPlay);   
-        computerRandomNumber = (computerMathRandom(3));  
+        //console.log(computerPlay); 
+        //console.log(playerScore);
+        //console.log(computerScore);  
+        computerRandomNumber = (computerMathRandom(3)); 
    }
 }
 
 game();
+gameResults(playerScore, computerScore);
 
 
